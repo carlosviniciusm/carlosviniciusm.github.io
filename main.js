@@ -1,9 +1,9 @@
 $(document).ready(function() {
     $(document).on('click', '#buttonRequest', function() {
-        getFrase('frase1', '1', '2000')
+        getFrase('frase1', '1', '9000')
         .then(resposta => {
             console.log(resposta);
-            return getFrase('frase2', '2', '2000');
+            return getFrase('frase2', '2', '5000');
         })
         .then(resposta => {
             console.log(resposta);
