@@ -14,9 +14,8 @@ $(document).ready(function() {
 });
 
 function getFrase(id, nr, tempo) {
-    Swal.fire({
-        text: 'Aguarde...'
-      })
+    Swal.close();
+    Swal.fire({ text: 'Aguarde! Solicitando frase ' + nr + '...' })
     Swal.showLoading()
 
     let url = `https://api.adviceslip.com/advice`;
@@ -28,10 +27,11 @@ function getFrase(id, nr, tempo) {
             .then((data) => {
                 $("#" + id).html(data.slip.advice)
                 $("#" + id).append(' ID - ' + nr);
-                resolve(data);
+                return data;
             })
-            .then(() => {
+            .then((data) => {
                 Swal.close();
+                resolve(data);
             });
         }, tempo)
     });
