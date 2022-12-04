@@ -1,13 +1,11 @@
 $(document).ready(function() {
     $(document).on('click', '#buttonRequest', function() {
         getFrase('frase1', '1', '9000')
-        .then(resposta => {
-            console.log(resposta);
-            return getFrase('frase2', '2', '5000');
-        })
-        .then(resposta => {
-            console.log(resposta);
-            return getFrase('frase3', '3', '2000');
+        .then(() => {
+            return getFrase('frase2', '2', '5000')
+            .then(() => {
+                return getFrase('frase3', '3', '2000');
+            });
         })
         .then(() => {
             console.log('Eu serei o último a ser exibido');
